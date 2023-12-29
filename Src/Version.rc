@@ -8,11 +8,11 @@ FILETYPE 0x2
 	{
 		BLOCK "040904B0"
 		{
-			VALUE "ProductName", "mod"
-			VALUE "CompanyName", "user95401"
-			VALUE "LegalCopyright", "user666's original"
-			VALUE "FileDescription", "mod made for gd 2.2!!! asd"
-			VALUE "OriginalFilename", "mod.dll"
+			VALUE "ProductName", "IconPatch22"
+			VALUE "CompanyName", "RuHax"
+			VALUE "LegalCopyright", "user666's original, RuHax Team"
+			VALUE "FileDescription", "Allowing you to change the maximum number of icons in GD 2.2!"
+			VALUE "OriginalFilename", "IconPatch22.dll"
 		}
 	}
 

@@ -6,9 +6,9 @@ set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} /MANIFEST:NO")
 set(LIBRARY_OUTPUT_PATH "${CMAKE_CURRENT_LIST_DIR}")
 cmake_policy(SET CMP0057 NEW)
 
-project ("mod")
-set(developer "user95401")
-set(description "mod made for gd 2.2!!! asd")
+project ("IconPatch22")
+set(developer "RuHax")
+set(description "Allowing you to change the maximum number of icons in GD 2.2!")
 set(lib_output "D:/Games/user666/2.2 PC GDPS but actually that is lol/fif issue/") # post build copy
 
 #curly-eureka
@@ -17,13 +17,12 @@ include("C:\\Users\\Lenovo\\source\\curly-eureka\\CURLY-EUREKA-INCL.cmake")# "\"
 
 #version
 set(FILEVERSION "1, 0, 0, 0")
-set(LegalCopyright "user666's original")
+set(LegalCopyright "user666's original, RuHax Team")
 configure_file("Version.rc" "../../../src/Version.rc")
 
 #mod
 file(GLOB_RECURSE SRC
 Src/*
-Src/Layers/*
 #${CURLY_EUREKA_DIR} to include other stuff
 )
 add_library(${PROJECT_NAME} SHARED ${SRC} ${CURLY_EUREKA_SRC})
