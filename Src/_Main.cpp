@@ -24,31 +24,38 @@ std::vector<unsigned char> intToBytes(int value)
 void updateIconsCount() {
     CSimpleIni ini;
     ini.LoadFile("IconsCount.ini");
-    int Player = 3;//= ini.GetLongValue("IconsCount", "Player", 484));
-    int Ship = 3;//= ini.GetLongValue("IconsCount", "Ship", 169);
-    int Player_ball = 3;//= ini.GetLongValue("IconsCount", "Player_ball", 118);
-    int Bird = 3;//= ini.GetLongValue("IconsCount", "Bird", 149);
-    int Dart = 3;//= ini.GetLongValue("IconsCount", "Dart", 69);
-    int Swingcopter = 3;//= ini.GetLongValue("IconsCount", "Swingcopter", 43);
-    int JetPack = 3;//= ini.GetLongValue("IconsCount", "JetPack", 5);
-
+    int Player = ini.GetLongValue("IconsCount", "Player", 484);
+    int Ship = ini.GetLongValue("IconsCount", "Ship", 169);
+    int Player_ball = ini.GetLongValue("IconsCount", "Player_ball", 118);
+    int Bird = ini.GetLongValue("IconsCount", "Bird", 149);
+    int Dart = ini.GetLongValue("IconsCount", "Dart", 69);
+    int Swingcopter = ini.GetLongValue("IconsCount", "Swingcopter", 43);
+    int JetPack = ini.GetLongValue("IconsCount", "JetPack", 5);
+    //
+    /*
+    *  сука ебучий патчинг нахуй какая же хуета сука
+    *  >:(
+    */
     /// BY RUHAX | GUSCHIN
     {
         //Player (484)
         {
             //todo: kinda broken plr rewrite i think
             std::vector<unsigned char> toRewrite = intToBytes(Player);
+            toRewrite = toRewrite[0] > 36 ? toRewrite : intToBytes(37);
             ModUtils::write_bytes(base + 0x1F0271, { 0xBB, toRewrite[0], toRewrite[1], toRewrite[2], toRewrite[3] });
-            ModUtils::write_bytes(base + 0x125AF5, { 0x81, 0xC6, toRewrite[0], toRewrite[1], toRewrite[2], toRewrite[3] });
             ModUtils::write_bytes(base + 0x1EF70F, { 0xB9, toRewrite[0], toRewrite[1], toRewrite[2], toRewrite[3] });
-            ModUtils::write_bytes(base + 0x2BD0B3, { 0xBA, toRewrite[0], toRewrite[1], toRewrite[2], toRewrite[3] });
-            ModUtils::write_bytes(base + 0x1EFB2E, { 0xB9, toRewrite[0], toRewrite[1], toRewrite[2], toRewrite[3] });
-            ModUtils::write_bytes(base + 0x2D1227, { 0xBB, toRewrite[0], toRewrite[1], toRewrite[2], toRewrite[3] });
+            ModUtils::write_bytes(base + 0x2BD0B3, { 0xBa, toRewrite[0], toRewrite[1], toRewrite[2], toRewrite[3] });
+            ModUtils::write_bytes(base + 0x2D1227, { 0xBb, toRewrite[0], toRewrite[1], toRewrite[2], toRewrite[3] });
             ModUtils::write_bytes(base + 0x12546E, { 0xB8, toRewrite[0], toRewrite[1], toRewrite[2], toRewrite[3] });
+            ModUtils::write_bytes(base + 0x2D1227, { 0xB8, toRewrite[0], toRewrite[1], toRewrite[2], toRewrite[3] });
+            ModUtils::write_bytes(base + 0x12546E, { 0xB8, toRewrite[0], toRewrite[1], toRewrite[2], toRewrite[3] });
+            ModUtils::write_bytes(base + 0x1EFB2E, { 0xB8, toRewrite[0], toRewrite[1], toRewrite[2], toRewrite[3] });
         };
         //Ship (169)
         {
             std::vector<unsigned char> toRewrite = intToBytes(Ship);
+            toRewrite = toRewrite[0] > 36 ? toRewrite : intToBytes(37);
             ModUtils::write_bytes(base + 0x125474, { 0xB8, toRewrite[0], toRewrite[1], toRewrite[2], toRewrite[3] });
             ModUtils::write_bytes(base + 0x125AFD, { 0x81, 0xC6, toRewrite[0], toRewrite[1], toRewrite[2], toRewrite[3] });
             ModUtils::write_bytes(base + 0x1F01C1, { 0xBB, toRewrite[0], toRewrite[1], toRewrite[2], toRewrite[3] });
@@ -57,80 +64,62 @@ void updateIconsCount() {
         //Player_ball (118)
         {
             std::vector<unsigned char> toRewrite = intToBytes(Player_ball);
+            toRewrite = toRewrite[0] > 36 ? toRewrite : intToBytes(37);
             ModUtils::write_bytes(base + 0x12547A, { 0xB8, toRewrite[0], toRewrite[1], toRewrite[2], toRewrite[3] });
             ModUtils::write_bytes(base + 0x125B05, { 0x83, 0xC6, toRewrite[0], toRewrite[1], toRewrite[2], toRewrite[3] });
             ModUtils::write_bytes(base + 0x1661A3, { 0xB8, toRewrite[0], toRewrite[1], toRewrite[2], toRewrite[3] });
-            ModUtils::write_bytes(base + 0x1F01D9, { 0xBB, toRewrite[0], toRewrite[1], toRewrite[2], toRewrite[3] });
+            ModUtils::write_bytes(base + 0x1F01D9, { 0xBB, toRewrite[0], toRewrite[1], toRewrite[2], toRewrite[3] });     
             ModUtils::write_bytes(base + 0x2D1997, { 0xBA, toRewrite[0], toRewrite[1], toRewrite[2], toRewrite[3] });
         };
         //Bird (149)
         {
             std::vector<unsigned char> toRewrite = intToBytes(Bird);
+            toRewrite = toRewrite[0] > 36 ? toRewrite : intToBytes(37);
             ModUtils::write_bytes(base + 0x125480, { 0xB8, toRewrite[0], toRewrite[1], toRewrite[2], toRewrite[3] });
-            ModUtils::write_bytes(base + 0x125B0A, { 0x83, 0xC6, toRewrite[0], toRewrite[1], toRewrite[2], toRewrite[3] });
-            ModUtils::write_bytes(base + 0x1661B7, { 0xB8, toRewrite[0], toRewrite[1], toRewrite[2], toRewrite[3] });
+            ModUtils::write_bytes(base + 0x125B0A, { 0x81, 0xc6, toRewrite[0], toRewrite[1], toRewrite[2], toRewrite[3] });
+            ModUtils::write_bytes(base + 0x1661B7, { 0xb8, toRewrite[0], toRewrite[1], toRewrite[2], toRewrite[3] });
             ModUtils::write_bytes(base + 0xC4D34, { 0x68, toRewrite[0], toRewrite[1], toRewrite[2], toRewrite[3] });
-            ModUtils::write_bytes(base + 0x1F01F1, { 0xBB, toRewrite[0], toRewrite[1], toRewrite[2], toRewrite[3] });
-            ModUtils::write_bytes(base + 0x2D1777, { 0xBA, toRewrite[0], toRewrite[1], toRewrite[2], toRewrite[3] });
+            ModUtils::write_bytes(base + 0x1F01F1, { 0xbb, toRewrite[0], toRewrite[1], toRewrite[2], toRewrite[3] });
+            ModUtils::write_bytes(base + 0x2D1777, { 0xba, toRewrite[0], toRewrite[1], toRewrite[2], toRewrite[3] });
         };
         //Dart (69)
         {
             std::vector<unsigned char> toRewrite = intToBytes(Dart);
-            ModUtils::write_bytes(base + 0x125486, { 0xB8, toRewrite[0], toRewrite[1], toRewrite[2], toRewrite[3] });
-            ModUtils::write_bytes(base + 0x1661CB, { 0xB8, toRewrite[0], toRewrite[1], toRewrite[2], toRewrite[3] });
-            ModUtils::write_bytes(base + 0x2D1D17, { 0xBA, toRewrite[0], toRewrite[1], toRewrite[2], toRewrite[3] });
+            toRewrite = toRewrite[0] > 36 ? toRewrite : intToBytes(37);
+            ModUtils::write_bytes(base + 0x125486, { 0xb8, toRewrite[0], toRewrite[1], toRewrite[2], toRewrite[3] });
+            ModUtils::write_bytes(base + 0x1661CB, { 0xb8, toRewrite[0], toRewrite[1], toRewrite[2], toRewrite[3] });
+            ModUtils::write_bytes(base + 0x2D1D17, { 0xba, toRewrite[0], toRewrite[1], toRewrite[2], toRewrite[3] });
             ModUtils::write_bytes(base + 0x125B12, { 0x83, 0xC6, toRewrite[0], toRewrite[1], toRewrite[2], toRewrite[3] });
+            ModUtils::write_bytes(base + 0x1F0206, { 0xbb, toRewrite[0], toRewrite[1], toRewrite[2], toRewrite[3] });
         };
         //Swingcopter (43)
         {
             std::vector<unsigned char> toRewrite = intToBytes(Swingcopter);
+            toRewrite = toRewrite[0] > 36 ? toRewrite : intToBytes(37);
             ModUtils::write_bytes(base + 0x125498, { 0xB8, toRewrite[0], toRewrite[1], toRewrite[2], toRewrite[3] });
             ModUtils::write_bytes(base + 0x5FF54, { 0xB8, toRewrite[0], toRewrite[1], toRewrite[2], toRewrite[3] });
             ModUtils::write_bytes(base + 0x16625C, { 0xB8, toRewrite[0], toRewrite[1], toRewrite[2], toRewrite[3] });
             ModUtils::write_bytes(base + 0x1812B6, { 0xB8, toRewrite[0], toRewrite[1], toRewrite[2], toRewrite[3] });
-            ModUtils::write_bytes(base + 0x1EB585, { 0xB8, toRewrite[0], toRewrite[1], toRewrite[2], toRewrite[3] });
-            ModUtils::write_bytes(base + 0x1F01F1, { 0xBB, toRewrite[0], toRewrite[1], toRewrite[2], toRewrite[3] });
+            ModUtils::write_bytes(base + 0x1F0245, { 0xBB, toRewrite[0], toRewrite[1], toRewrite[2], toRewrite[3] });
             ModUtils::write_bytes(base + 0x2D1B57, { 0xBA, toRewrite[0], toRewrite[1], toRewrite[2], toRewrite[3] });
             ModUtils::write_bytes(base + 0x125B21, { 0x83, 0xC6, toRewrite[0], toRewrite[1], toRewrite[2], toRewrite[3] });
         };
         //JetPack (5)
         {
             std::vector<unsigned char> toRewrite = intToBytes(JetPack);
+            toRewrite = toRewrite[0] > 36 ? toRewrite : intToBytes(37);
             ModUtils::write_bytes(base + 0x1254AA, { 0xB8, toRewrite[0], toRewrite[1], toRewrite[2], toRewrite[3] });
             ModUtils::write_bytes(base + 0x16626D, { 0xB8, toRewrite[0], toRewrite[1], toRewrite[2], toRewrite[3] });
             ModUtils::write_bytes(base + 0x1EB72E, { 0xB8, toRewrite[0], toRewrite[1], toRewrite[2], toRewrite[3] });
-            ModUtils::write_bytes(base + 0x1F025A, { 0xBB, toRewrite[0], toRewrite[1], toRewrite[2], toRewrite[3] });
-            ModUtils::write_bytes(base + 0x2D15B7, { 0xBA, toRewrite[0], toRewrite[1], toRewrite[2], toRewrite[3] });
-            ModUtils::write_bytes(base + 0x125B26, { 0x83, 0xC6, toRewrite[0], toRewrite[1], toRewrite[2], toRewrite[3] });
+            ModUtils::write_bytes(base + 0x1F025A, { 0xBb, toRewrite[0], toRewrite[1], toRewrite[2], toRewrite[3] });
+            ModUtils::write_bytes(base + 0x2D15B7, { 0xBa, toRewrite[0], toRewrite[1], toRewrite[2], toRewrite[3] });
+            ModUtils::write_bytes(base + 0x125B26, { 0x83, 0xc6, toRewrite[0], toRewrite[1], toRewrite[2], toRewrite[3] });
         };
     };
 }
 
-void calcIconsCount() {
-    CSimpleIni ini;
-    ini.LoadFile("IconsCount.ini");
-    std::stringstream num;
-
-    std::vector<std::string> SearchPaths = CCFileUtils::sharedFileUtils()->getSearchPaths();
-    for (std::vector<std::string>::iterator i = SearchPaths.begin(); i != SearchPaths.end(); ++i) {
-        CCFileUtils::sharedFileUtils()->addSearchPath((i[0] + "icons").c_str());
-    }
-
-    int Player = 0;
-    for (int i = 0; i < 1000; ++i) {
-        std::string toFind = std::format("player_{}.png", (std::stringstream() << std::setw(2) << std::setfill('0') << i).str());
-        if (CCFileUtils::sharedFileUtils()->isFileExist(toFind.c_str())) {
-            ++Player;
-        }
-    }
-    CCMessageBox(std::format("Player: {}", Player).c_str(), __FUNCSIG__);
-
-    ini.SaveFile("geode/config/IconsCount.ini");
-}
-
 void __fastcall loadingFinished(CCLayer* self, void* edx) {//; = win 0x2722A0;
     MappedHooks::getOriginal(loadingFinished)(self, edx);
-    calcIconsCount();
 }
 
 DWORD WINAPI ModThread(void* hModule) {
@@ -141,6 +130,35 @@ DWORD WINAPI ModThread(void* hModule) {
     //hooks
     MH_Initialize();
     MappedHooks::registerHook(base + 0x2722A0, loadingFinished);
+    //cfginit
+    CSimpleIni ini;
+    ini.LoadFile("IconsCount.ini");
+    if (!(ini.KeyExists("IconsCount", "Player")))
+        ini.SetLongValue("IconsCount", "Player", 484, 
+            ";------------------------" "\n"
+            "; DISCOVERED BY GUSCHIN" "\n"
+            "; https://github.com/zGuschin/IconPatch" "\n"
+            ";------------------------" "\n"
+            "\n"
+            "; WARN: u cant set less than 36" "\n"
+            "\n"
+            "; org count of cubes 484"
+        );
+    if (!(ini.KeyExists("IconsCount", "Ship")))
+        ini.SetLongValue("IconsCount", "Ship", 169, "; org count of ships 169");
+    if (!(ini.KeyExists("IconsCount", "Player_ball")))
+        ini.SetLongValue("IconsCount", "Player_ball", 118, "; org count of BALLS 118");
+    if (!(ini.KeyExists("IconsCount", "Bird")))
+        ini.SetLongValue("IconsCount", "Bird", 149, "; org count of ufos 149");
+    if (!(ini.KeyExists("IconsCount", "Dart")))
+        ini.SetLongValue("IconsCount", "Dart", 41, "; org count of waves 41");
+    if (!(ini.KeyExists("IconsCount", "Swingcopter")))
+        ini.SetLongValue("IconsCount", "Swingcopter", 43, "; org count of Swingcopters 43");
+    if (!(ini.KeyExists("IconsCount", "JetPack")))
+        ini.SetLongValue("IconsCount", "JetPack", 5, "; org count of JetPacks 5");
+    /*if (!(ini.KeyExists("IconsCount", "Auto calculation")))
+        ini.SetBoolValue("IconsCount", "Auto calculation", false, "; Auto calculation icons count by loaded textures");*/
+    ini.SaveFile("IconsCount.ini");
     //update count
     while (true) {
         Sleep(1000);
